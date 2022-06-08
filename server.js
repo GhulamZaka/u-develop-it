@@ -10,30 +10,18 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // // Use environment variables for security
-// const database = "election"; // Database name
-// const dbConn = {
-//   host: process.env.DB_HOST,
-//   port: process.env.DB_PORT,
-//   user: process.env.DB_USER,
-//   password: process.env.DB_PASS,
-//   database: database,
-// };
-// // Connect to database
-// const db = mysql.createConnection(dbConn);
-// console.log("Connected to the election database.");
-
+const database = "election"; // Database name
+const dbConn = {
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: database,
+};
 // Connect to database
-const db = mysql.createConnection(
-  {
-    host: "localhost",
-    // Your MySQL username,
-    user: "root",
-    // Your MySQL password
-    password: "Zakamysql123@",
-    database: "election",
-  },
-  console.log("Connected to the election database.")
-);
+const db = mysql.createConnection(dbConn);
+console.log("Connected to the election database.");
+
 // db.query(`SELECT * FROM candidates`, (err, rows) => {
 //   console.log(rows);
 // });
